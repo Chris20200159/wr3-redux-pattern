@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Child1 from './components/Child1';
 import './App.css';
 
@@ -31,4 +32,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => state
+export default connect(mapStateToProps)(App);
