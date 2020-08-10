@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {addMessage} from './redux/reducer';
 import Child1 from './components/Child1';
 import './App.css';
+import e from 'express';
 
 class App extends React.Component {
   constructor(){
@@ -10,10 +12,14 @@ class App extends React.Component {
       message: ''
     }
     this.changeHandler = this.changeHandler.bind(this);
-    this.addMessage = this.addMessage.bind(this);
+    this.pushButton = this.addMessage.bind(this);
   }
 
-  addMessage = () =>{
+  pushButton = () =>{
+    this.props.addMessage(this.state.message);
+    this.setState({
+      message: ''
+    })
 
   }
 
@@ -33,4 +39,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => state
-export default connect(mapStateToProps)(App);
+
+const mapDispatchToProps = {addMessage}
+
+export default connect(mapStateToProps, {addMessage})(App);

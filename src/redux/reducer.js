@@ -16,7 +16,7 @@ export function addMessage(val){
 export default function reducer(state = initialState, action){
   switch(action.type){
     case ADD_MESSAGE:
-      return {...state, messages: [...this.state.messages, action.payload]}
+      return {...state, messages: [...state.messages, action.payload]}
     default: 
       return state;
   };
